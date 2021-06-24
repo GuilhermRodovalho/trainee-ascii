@@ -1,15 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Generated } from 'typeorm';
 
 @Entity('videos')
 class Video {
   @PrimaryGeneratedColumn('uuid')
-  id: String;
+  @Generated('uuid')
+  id: string;
 
   @Column()
-  name: String;
+  name: string;
 
   @Column('int')
-  duration: Number;
+  duration: number;
 }
 
 export default Video;
