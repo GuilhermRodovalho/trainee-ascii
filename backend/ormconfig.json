@@ -8,6 +8,8 @@
   "entities": [
     "./src/models/*.ts"
   ],
+  "autoLoadEntities": true,
+  "logging": true,
   "migrations": [
     "./src/database/migrations/*.ts"
   ],
