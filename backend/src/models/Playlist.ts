@@ -17,7 +17,7 @@ class Playlist {
   @Column()
   name: string;
 
-  @ManyToMany(() => Video)
+  @ManyToMany(() => Video, { cascade: true })
   @JoinTable()
   videos: Video[];
 }

@@ -7,6 +7,7 @@ class UploadPlaylistService {
 
     const playlist = playlistRepository.create({
       name,
+      videos: [],
     });
 
     await playlistRepository.save(playlist);

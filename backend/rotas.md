@@ -2,7 +2,7 @@
 - Adicionar vídeo -- feito
 - Remover vídeo -- feito
 - Criar playlist -- feito
-- Remover playlist
+- Remover playlist -- feito
 - Associar um vídeo a uma playlist
 - Criar pasta
 - Remover pasta
