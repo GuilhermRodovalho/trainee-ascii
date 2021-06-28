@@ -3,7 +3,9 @@
 - Remover vídeo -- feito
 - Criar playlist -- feito
 - Remover playlist -- feito
-- Associar um vídeo a uma playlist
+- Associar um vídeo a uma playlist -- feito
+- Desassociar um vídeo de uma playlist
+- Fazer o upload dos vídeos
 - Criar pasta
 - Remover pasta
 - Pegar o tempo da playlist

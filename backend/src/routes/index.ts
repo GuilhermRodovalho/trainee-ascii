@@ -60,12 +60,15 @@ routes.post('/add-to-playlist', async (request, response) => {
 
   const associateVideoToPlaylistService = new AssociateVideoToPlaylistService();
 
-  const playlist = await associateVideoToPlaylistService.execute(
-    playlistId,
-    videoId,
-  );
-
-  response.json(playlist);
+  try {
+    const playlist = await associateVideoToPlaylistService.execute(
+      playlistId,
+      videoId,
+    );
+    response.json(playlist);
+  } catch (error) {
+    response.json({ message: `${error}` });
+  }
 });
 
 export default routes;

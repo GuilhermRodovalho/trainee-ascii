@@ -38,7 +38,7 @@ class AssociateVideoToPlaylistService {
     );
 
     if (isvideoalreadyonplaylist) {
-      return false;
+      throw new Error('This video is already linked to this playlist');
     }
 
     try {
