@@ -5,7 +5,7 @@ import CreatePlaylistService from '../services/CreatePlaylistService';
 import Video from '../models/Video';
 import Playlist from '../models/Playlist';
 import DeleteVideoService from '../services/DeleteVideoService';
-import AssociateVideoToPlaylistService from '../services/AssociateVideoToPlaylistService';
+import ConnectVideoToPlaylistService from '../services/ConnectVideoToPlaylistService';
 
 const routes = Router();
 
@@ -58,7 +58,7 @@ routes.delete('/video', async (request, response) => {
 routes.post('/add-to-playlist', async (request, response) => {
   const { playlistId, videoId } = request.body;
 
-  const associateVideoToPlaylistService = new AssociateVideoToPlaylistService();
+  const associateVideoToPlaylistService = new ConnectVideoToPlaylistService();
 
   try {
     const playlist = await associateVideoToPlaylistService.execute(

@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm';
 import Playlist from '../models/Playlist';
 import Video from '../models/Video';
 
-class AssociateVideoToPlaylistService {
+class ConnectVideoToPlaylistService {
   public async execute(
     playlistId: string,
     videoId: string,
@@ -52,4 +52,4 @@ class AssociateVideoToPlaylistService {
   }
 }
 
-export default AssociateVideoToPlaylistService;
+export default ConnectVideoToPlaylistService;
