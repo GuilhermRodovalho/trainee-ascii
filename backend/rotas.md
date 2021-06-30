@@ -4,8 +4,8 @@
 - Criar playlist -- feito
 - Remover playlist -- feito
 - Associar um vídeo a uma playlist -- feito
-- Desassociar um vídeo de uma playlist
-- Fazer o upload dos vídeos
+- Desassociar um vídeo de uma playlist -- feito
+- Fazer o upload dos vídeos -- feito
 - Criar pasta
 - Remover pasta
 - Pegar o tempo da playlist
@@ -16,6 +16,9 @@
 - Refatorar rotas (add controllers)
 - Adicionar tratativa de erros.
 - (opcional) Refatorar para o DDD.
+- (opcional) Usar o multer de uma forma que não seja um middleware, pois
+assim a gente vai consegui verificar o nome antes de salvar, e não precisará
+salvar o nome com o hash antes, mas os nomes serão exclusivos.
 
 Ideia:
 Salvar tudo localmente, pra não precisar hospedar um banco de dados com vídeos (pq ocupa muito espaço) e etc.
