@@ -42,7 +42,7 @@ routes.post('/upload', upload.single('video'), async (request, response) => {
 
     return response.json(video);
   } catch (error) {
-    return response.status(400).json({ message: `${error}` });
+    return response.status(400).json({ error: error.message });
   }
 });
 
@@ -68,7 +68,7 @@ routes.post('/add-to-playlist', async (request, response) => {
     );
     response.json(playlist);
   } catch (error) {
-    response.json({ message: `${error}` });
+    response.json({ error: error.message });
   }
 });
 
@@ -85,7 +85,7 @@ routes.delete('/remove-from-playlist', async (request, response) => {
     );
     response.json(playlist);
   } catch (error) {
-    response.json({ message: `${error}` });
+    response.json({ error: error.message });
   }
 });
 

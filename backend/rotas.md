@@ -1,11 +1,11 @@
 # Funcionalidades
 - Adicionar vídeo -- feito
-- Remover vídeo -- feito
+- Remover vídeo -- Precisa de mudanças (remover o arquivo físico)
 - Criar playlist -- feito
 - Remover playlist -- feito
 - Associar um vídeo a uma playlist -- feito
 - Desassociar um vídeo de uma playlist -- feito
-- Fazer o upload dos vídeos -- feito
+- Fazer o upload dos vídeos -- feito // mudar a forma como recebe os dados.
 - Criar pasta
 - Remover pasta
 - Pegar o tempo da playlist
