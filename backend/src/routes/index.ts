@@ -27,18 +27,67 @@ routes.get('/videos', async (_, response) => {
 routes.get('/playlists', async (request, response) => {
   const playlistRepository = getRepository(Playlist);
 
-  const videos = await playlistRepository.find({
-    relations: ['videos'],
-  });
+  const videos = await playlistRepository.find();
 
   return response.json(videos);
+});
+
+routes.get('/playlist/:id', async (request, response) => {
+  const { id } = request.params;
+
+  try {
+    const playlistRepository = getRepository(Playlist);
+    const playlist = await playlistRepository.find({
+      where: {
+        id,
+      },
+      relations: ['videos'],
+    });
+    return response.json(playlist);
+  } catch (error) {
+    return response.status(400).json({ error: error.message });
+  }
+});
+
+routes.get('/get-time/:id', async (request, response) => {
+  const { id } = request.params;
+
+  try {
+    const playlistRepository = getRepository(Playlist);
+
+    const playlist = await playlistRepository.findOne({
+      where: {
+        id,
+      },
+      relations: ['videos'],
+    });
+
+    if (!playlist) {
+      return response.sendStatus(400);
+    }
+
+    let time = 0;
+    playlist.videos.forEach(video => {
+      time += video.duration;
+    });
+
+    return response.status(200).json({ time });
+  } catch (error) {
+    return response.json({ error: error.message });
+  }
 });
 
 routes.post('/upload', upload.single('video'), async (request, response) => {
   try {
     const uploadVideoService = new UploadVideoService();
 
-    const video = await uploadVideoService.execute(request);
+    if (!request.file) {
+      return response
+        .status(400)
+        .json({ error: 'There must be file passed to this route' });
+    }
+
+    const video = await uploadVideoService.execute(request.file);
 
     return response.json(video);
   } catch (error) {
@@ -66,9 +115,9 @@ routes.post('/add-to-playlist', async (request, response) => {
       playlistId,
       videoId,
     );
-    response.json(playlist);
+    return response.json(playlist);
   } catch (error) {
-    response.json({ error: error.message });
+    return response.json({ error: error.message });
   }
 });
 
@@ -83,20 +132,24 @@ routes.delete('/remove-from-playlist', async (request, response) => {
       playlistId,
       videoId,
     );
-    response.json(playlist);
+    return response.json(playlist);
   } catch (error) {
-    response.json({ error: error.message });
+    return response.json({ error: error.message });
   }
 });
 
 routes.delete('/video', async (request, response) => {
-  const { id } = request.body;
+  try {
+    const { id } = request.body;
 
-  const deleteVideoService = new DeleteVideoService();
+    const deleteVideoService = new DeleteVideoService();
 
-  await deleteVideoService.execute(id);
+    await deleteVideoService.execute(id);
 
-  response.send();
+    return response.sendStatus(200);
+  } catch (error) {
+    return response.status(400).json({ message: error.message });
+  }
 });
 
 routes.delete('/playlist', async (request, response) => {
@@ -106,7 +159,7 @@ routes.delete('/playlist', async (request, response) => {
 
   await deletePlaylistService.execute(id);
 
-  response.send();
+  return response.send();
 });
 
 export default routes;

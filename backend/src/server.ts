@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import { createConnection, Connection } from 'typeorm';
 import express from 'express';
+import path from 'path';
 import routes from './routes';
 
 // import './database';
@@ -24,6 +25,7 @@ createConnection({
     const app = express();
 
     app.use(express.json());
+    app.use('/files', express.static(path.resolve(__dirname, '..', 'videos')));
     app.use(routes);
 
     app.listen(3333, () => {

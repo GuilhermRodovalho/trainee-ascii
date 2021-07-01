@@ -1,16 +1,16 @@
 # Funcionalidades
 - Adicionar vídeo -- feito
-- Remover vídeo -- Precisa de mudanças (remover o arquivo físico)
+- Remover vídeo -- feito
 - Criar playlist -- feito
 - Remover playlist -- feito
 - Associar um vídeo a uma playlist -- feito
 - Desassociar um vídeo de uma playlist -- feito
-- Fazer o upload dos vídeos -- feito // mudar a forma como recebe os dados.
+- Fazer o upload dos vídeos -- feito
 - Criar pasta
 - Remover pasta
-- Pegar o tempo da playlist
-- Acessar playlist (retornando uma lista com os vídeos)
-- Retonar o vídeo do banco pro front-end
+- Pegar o tempo da playlist -- feito
+- Acessar playlist (retornando uma lista com os vídeos) -- feito
+- Retonar o vídeo do banco pro front-end -- feito (/files/nome-do-arquivo)
 
 ----------------------
 - Refatorar rotas (add controllers)
