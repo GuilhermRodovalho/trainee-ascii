@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm';
 import Playlist from '../models/Playlist';
 
-class UploadPlaylistService {
+class CreatePlaylistService {
   public async execute(name: string): Promise<Playlist> {
     const playlistRepository = getRepository(Playlist);
 
@@ -16,4 +16,4 @@ class UploadPlaylistService {
   }
 }
 
-export default UploadPlaylistService;
+export default CreatePlaylistService;

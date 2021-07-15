@@ -6,6 +6,7 @@ import UploadVideoService from '../services/UploadVideoService';
 import DeleteVideoService from '../services/DeleteVideoService';
 import ConnectVideoToPlaylistService from '../services/ConnectVideoToPlaylistService';
 import DisconnectVideoFromPlaylistService from '../services/DisconnectVideoFromPlaylistService';
+import AddVideoToFolderService from '../services/AddVideoToFolderService';
 
 import uploadConfig from '../config/upload';
 
@@ -56,6 +57,20 @@ videoRouter.post('/add-to-playlist', async (request, response) => {
     return response.json(playlist);
   } catch (error) {
     return response.json({ error: error.message });
+  }
+});
+
+videoRouter.post('/add-to-folder', async (request, response) => {
+  const { folderId, videoId } = request.body;
+
+  const addVideoToFolderService = new AddVideoToFolderService();
+
+  try {
+    const folder = await addVideoToFolderService.execute(folderId, videoId);
+
+    return response.json(folder);
+  } catch (err) {
+    return response.json({ error: err.message });
   }
 });
 

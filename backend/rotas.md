@@ -6,11 +6,16 @@
 - Associar um vídeo a uma playlist -- feito
 - Desassociar um vídeo de uma playlist -- feito
 - Fazer o upload dos vídeos -- feito
-- Criar pasta
-- Remover pasta
+- Tirar vídeo da pasta
 - Pegar o tempo da playlist -- feito
 - Acessar playlist (retornando uma lista com os vídeos) -- feito
 - Retonar o vídeo do banco pro front-end -- feito (/files/nome-do-arquivo)
+- Criar pasta -- feito
+- Remover pasta -- feito
+- Colocar vídeo na pasta -- feito
+- Colocar pasta dentro de outra pasta -- feito
+- Tirar um vídeo de dentro de uma pasta
+- Tirar pasta de dentro de outra pasta
 
 ----------------------
 - Refatorar rotas (add controllers)
