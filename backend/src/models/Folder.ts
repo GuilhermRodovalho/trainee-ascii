@@ -23,8 +23,10 @@ class Folder {
   @JoinTable()
   videos: Video[];
 
-  @ManyToOne(() => Folder, folder => folder.childFolders)
-  parentFolder: Folder;
+  @ManyToOne(() => Folder, folder => folder.childFolders, {
+    nullable: true,
+  })
+  parentFolder: Folder | null;
 
   @OneToMany(() => Folder, folder => folder.parentFolder)
   childFolders: Folder[];

@@ -4,9 +4,11 @@ import Folder from '../models/Folder';
 import CreateFolderService from '../services/CreateFolderService';
 import DeleteFolderService from '../services/DeleteFolderService';
 import PutFolderIntoFolderService from '../services/PutFolderIntoFolderService';
+import RemoveFolderFromOtherFolderService from '../services/RemoveFolderFromOtherFolderService';
 
 const folderRoutes = Router();
 
+// Retorna todas as pastas da aplicação
 folderRoutes.get('/folders', async (_, response) => {
   try {
     const folderRepository = getRepository(Folder);
@@ -21,6 +23,7 @@ folderRoutes.get('/folders', async (_, response) => {
   }
 });
 
+// Cria uma pasta
 folderRoutes.post('/create-folder', async (request, response) => {
   const { name } = request.body;
 
@@ -35,6 +38,7 @@ folderRoutes.post('/create-folder', async (request, response) => {
   }
 });
 
+// Coloca uma pasta dentro de outra
 folderRoutes.post('/put-into-folder', async (request, response) => {
   const { parentFolderId, childFolderId } = request.body;
 
@@ -49,6 +53,19 @@ folderRoutes.post('/put-into-folder', async (request, response) => {
   }
 });
 
+// Move uma pasta diretamente pra raiz
+folderRoutes.post('/remove-from-other-folder', async (request, response) => {
+  const { folderId } = request.body;
+
+  const removeFolderFromOtherFolderService =
+    new RemoveFolderFromOtherFolderService();
+
+  const folder = await removeFolderFromOtherFolderService.execute(folderId);
+
+  return response.json(folder);
+});
+
+// Deleta uma pasta
 folderRoutes.delete('/folder', async (request, response) => {
   const { id } = request.body;
 

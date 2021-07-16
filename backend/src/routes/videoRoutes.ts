@@ -7,6 +7,7 @@ import DeleteVideoService from '../services/DeleteVideoService';
 import ConnectVideoToPlaylistService from '../services/ConnectVideoToPlaylistService';
 import DisconnectVideoFromPlaylistService from '../services/DisconnectVideoFromPlaylistService';
 import AddVideoToFolderService from '../services/AddVideoToFolderService';
+import RemoveVideoFromFolderService from '../services/RemoveVideoFromFolderService';
 
 import uploadConfig from '../config/upload';
 
@@ -71,6 +72,23 @@ videoRouter.post('/add-to-folder', async (request, response) => {
     return response.json(folder);
   } catch (err) {
     return response.json({ error: err.message });
+  }
+});
+
+videoRouter.delete('/remove-from-folder', async (request, response) => {
+  const { folderId, videoId } = request.body;
+
+  try {
+    const removeVideoFromFolderService = new RemoveVideoFromFolderService();
+
+    const folder = await removeVideoFromFolderService.execute(
+      folderId,
+      videoId,
+    );
+
+    return response.json(folder);
+  } catch (err) {
+    return response.status(500).jsonp({ error: err.message });
   }
 });
 

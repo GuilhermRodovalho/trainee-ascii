@@ -14,8 +14,8 @@
 - Remover pasta -- feito
 - Colocar vídeo na pasta -- feito
 - Colocar pasta dentro de outra pasta -- feito
-- Tirar um vídeo de dentro de uma pasta
-- Tirar pasta de dentro de outra pasta
+- Tirar um vídeo de dentro de uma pasta -- feito
+- Tirar pasta de dentro de outra pasta -- feito
 
 ----------------------
 - Refatorar rotas (add controllers)
